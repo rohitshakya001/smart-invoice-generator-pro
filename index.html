@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Smart Invoice Generator Pro</title>
+
+    <link rel="stylesheet" href="style.css">
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
+</head>
+
+<body>
+
+    <div class="container">
+
+        <header>
+            <h1>Smart Invoice Generator Pro</h1>
+
+            <p>
+                Generate Professional GST Invoices Instantly
+            </p>
+
+            <p class="hero-desc">
+                Create GST invoices with automatic tax calculation,
+                PDF export and print support.
+            </p>
+        </header>
+
+        <div class="main-grid">
+
+            <!-- FORM SECTION -->
+
+            <div class="form-card">
+
+                <h2>Create Invoice</h2>
+
+                <label>Company Name</label>
+                <input type="text" id="companyName" placeholder="Enter Company Name">
+
+                <label>Company GSTIN</label>
+                <input type="text" id="companyGST" placeholder="Enter Company GSTIN">
+
+                <label>Client Name</label>
+                <input type="text" id="clientName" placeholder="Enter Client Name">
+
+                <label>Client GSTIN</label>
+                <input type="text" id="clientGST" placeholder="Enter Client GSTIN">
+
+                <label>Service / Product Name</label>
+                <input type="text" id="serviceName" placeholder="Enter Service Name">
+
+                <label>Amount (₹)</label>
+                <input type="number" id="amount" placeholder="Enter Amount">
+
+                <label>GST Rate (%)</label>
+
+                <select id="gstRate">
+                    <option value="5">5%</option>
+                    <option value="12">12%</option>
+                    <option value="18" selected>18%</option>
+                    <option value="28">28%</option>
+                </select>
+
+                <div class="btn-group">
+
+                    <button onclick="generateInvoice()">
+                        Generate Invoice
+                    </button>
+
+                    <button onclick="resetForm()" class="secondary">
+                        Reset
+                    </button>
+
+                </div>
+
+            </div>
+
+            <!-- INVOICE PREVIEW -->
+
+            <div class="invoice-card" id="invoice">
+
+                <div class="invoice-header">
+
+                    <div>
+                        <h2>INVOICE</h2>
+                        <span class="paid-badge">PAID</span>
+                    </div>
+
+                    <div>
+
+                        <p>
+                            <strong>Invoice No:</strong>
+                            <span id="invoiceNumber">INV-001</span>
+                        </p>
+
+                        <p>
+                            <strong>Date:</strong>
+                            <span id="invoiceDate"></span>
+                        </p>
+
+                    </div>
+
+                </div>
+
+                <hr>
+
+                <div class="invoice-info">
+
+                    <p>
+                        <strong>Company:</strong>
+                        <span id="previewCompany">
+                            Your Company
+                        </span>
+                    </p>
+
+                    <p>
+                        <strong>Company GSTIN:</strong>
+                        <span id="previewCompanyGST">
+                            GSTIN
+                        </span>
+                    </p>
+
+                    <p>
+                        <strong>Client:</strong>
+                        <span id="previewClient">
+                            Client Name
+                        </span>
+                    </p>
+
+                    <p>
+                        <strong>Client GSTIN:</strong>
+                        <span id="previewClientGST">
+                            GSTIN
+                        </span>
+                    </p>
+
+                    <p>
+                        <strong>Service:</strong>
+                        <span id="previewService">
+                            Service Name
+                        </span>
+                    </p>
+
+                </div>
+
+                <table>
+
+                    <thead>
+                        <tr>
+                            <th>Description</th>
+                            <th>Amount</th>
+                        </tr>
+                    </thead>
+
+                    <tbody>
+
+                        <tr>
+                            <td>Base Amount</td>
+                            <td>₹ <span id="baseAmount">0</span></td>
+                        </tr>
+
+                        <tr>
+                            <td>GST Amount</td>
+                            <td>₹ <span id="gstAmount">0</span></td>
+                        </tr>
+
+                        <tr>
+                            <td>CGST</td>
+                            <td>₹ <span id="cgstAmount">0</span></td>
+                        </tr>
+
+                        <tr>
+                            <td>SGST</td>
+                            <td>₹ <span id="sgstAmount">0</span></td>
+                        </tr>
+
+                    </tbody>
+
+                </table>
+
+                <div class="total-section">
+
+                    <h3>
+                        Total Amount:
+                        ₹ <span id="totalAmount">0</span>
+                    </h3>
+
+                </div>
+
+            </div>
+
+        </div>
+
+        <!-- ACTION BUTTONS -->
+
+        <div class="action-buttons">
+
+            <button onclick="downloadPDF()">
+                Download PDF
+            </button>
+
+            <button onclick="window.print()">
+                Print Invoice
+            </button>
+
+        </div>
+
+        <!-- FOOTER -->
+
+        <footer>
+
+            <h3>Rohit</h3>
+
+            <p>
+                rohitshakya357@gmail.com
+            </p>
+
+            <p>
+                Smart Invoice Generator Project
+            </p>
+
+            <a href="https://digitalheroesco.com" target="_blank">
+
+                <button class="digital-btn">
+                    Built for Digital Heroes
+                </button>
+
+            </a>
+
+        </footer>
+
+    </div>
+
+    <script src="script.js"></script>
+
+</body>
+
+</html>
